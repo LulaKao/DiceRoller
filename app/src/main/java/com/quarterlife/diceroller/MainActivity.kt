@@ -3,6 +3,7 @@ package com.quarterlife.diceroller
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 
 class MainActivity : AppCompatActivity() {
@@ -22,28 +23,23 @@ class MainActivity : AppCompatActivity() {
 
     private fun rollDice() {
         // create first dice
-        var dice1 = Dice()
-        var rollNumber1 = dice1.roll()
-
-        // create second dice
-        var dice2 = Dice()
-        var rollNumber2 = dice2.roll()
-
-        // create third dice
-        var dice3 = Dice()
-        var rollNumber3 = dice3.roll()
-
-        // add the score
-        var score = rollNumber1 + rollNumber2 + rollNumber3
+        var dice = Dice()
+        var rollNumber = dice.roll()
 
         // initial view
-        val resultTextView : TextView = findViewById(R.id.textView)
+        val imgDice :ImageView = findViewById(R.id.img_dice)
 
-        // set text
-        resultTextView.text = "dice1: $rollNumber1\n" +
-                "dice2: $rollNumber2\n" +
-                "dice3: $rollNumber3\n" +
-                "--------------\n" +
-                "score: $score"
+        // set img result
+        var img = when(rollNumber){
+            1 -> R.drawable.dice_1
+            2 -> R.drawable.dice_2
+            3 -> R.drawable.dice_3
+            4 -> R.drawable.dice_4
+            5 -> R.drawable.dice_5
+            else -> R.drawable.dice_6
+        }
+
+        // set img to ImageView
+        imgDice.setImageResource(img)
     }
 }
