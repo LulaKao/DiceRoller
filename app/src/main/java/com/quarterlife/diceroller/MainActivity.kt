@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
-import android.widget.TextView
+import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun rollDice() {
         // create first dice
-        var dice = Dice()
+        var dice = Dice(6)
         var rollNumber = dice.roll()
 
         // initial view
@@ -41,5 +41,11 @@ class MainActivity : AppCompatActivity() {
 
         // set img to ImageView
         imgDice.setImageResource(img)
+
+        // set the content description
+        imgDice.contentDescription = rollNumber.toString()
+
+        // show the toast
+        Toast.makeText(this, "$rollNumber rolled!", Toast.LENGTH_SHORT).show()
     }
 }
